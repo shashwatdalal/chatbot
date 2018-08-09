@@ -1,12 +1,8 @@
-import (
-  "log"
-  "net/http"
-)
+package main
+
+import "net/http"
 
 func main() {
-  fs := http.FileServer(http.Dir("build"))
-  http.Handle("/", fs)
-
-  log.Println("Listening...")
-  http.ListenAndServe(":80", nil)
+	panic(http.ListenAndServe(":80", http.FileServer(http.Dir("/build"))))
 }
+
